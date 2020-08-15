@@ -25,6 +25,7 @@ def check_result():
     # Check horizontally
     if board[0] == board[1] == board[2] == 'X' or board[0] == board[1] == board[2] == 'O':
         if board[0] == 'X':
+            print_board()
             print(f'\nYou Win! :-)')
             closeQues = input('Do you want to quit (y/n)')
             if closeQues == 'y':
@@ -33,6 +34,7 @@ def check_result():
                 closeGame = True
 
         else:
+            print_board()
             print(f'\nYou Lose :(')
             closeQues = input('Do you want to quit (y/n)')
             if closeQues == 'y':
@@ -43,6 +45,7 @@ def check_result():
 
     elif board[3] == board[4] == board[5] == 'X' or board[3] == board[4] == board[5] == 'O':
         if board[3] == 'X':
+            print_board()
             print(f'\nYou Win! :-)')
             closeQues = input('Do you want to quit (y/n)')
             if closeQues == 'y':
@@ -51,6 +54,7 @@ def check_result():
                 closeGame = True
 
         else:
+            print_board()
             print(f'\nYou Lose :(')
             closeQues = input('Do you want to quit (y/n)')
             if closeQues == 'y':
@@ -60,6 +64,7 @@ def check_result():
 
     elif board[6] == board[7] == board[8] == 'X' or board[6] == board[7] == board[8] == 'O':
         if board[6] == 'X':
+            print_board()
             print(f'\nYou Win! :-)')
             closeQues = input('Do you want to quit (y/n)')
             if closeQues == 'y':
@@ -68,6 +73,7 @@ def check_result():
                 closeGame = True
 
         else:
+            print_board()
             print(f'\nYou Lose :(')
             closeQues = input('Do you want to quit (y/n)')
             if closeQues == 'y':
@@ -80,6 +86,7 @@ def check_result():
     # Check Vertically
     elif board[0] == board[3] == board[6] == 'X' or board[0] == board[3] == board[6] == 'O':
         if board[0] == 'X':
+            print_board()
             print(f'\nYou Win! :-)')
             closeQues = input('Do you want to quit (y/n)')
             if closeQues == 'y':
@@ -88,6 +95,7 @@ def check_result():
                 closeGame = True
 
         else:
+            print_board()
             print(f'\nYou Lose :(')
             closeQues = input('Do you want to quit (y/n)')
             if closeQues == 'y':
@@ -97,6 +105,7 @@ def check_result():
 
     elif board[1] == board[4] == board[7] == 'X' or board[1] == board[4] == board[7] == 'O':
         if board[1] == 'X':
+            print_board()
             print(f'\nYou Win! :-)')
             closeQues = input('Do you want to quit (y/n)')
             if closeQues == 'y':
@@ -105,6 +114,7 @@ def check_result():
                 closeGame = True
 
         else:
+            print_board()
             print(f'\nYou Lose :(')
             closeQues = input('Do you want to quit (y/n)')
             if closeQues == 'y':
@@ -114,6 +124,7 @@ def check_result():
 
     elif board[2] == board[5] == board[8] == 'X' or board[2] == board[5] == board[8] == 'O':
         if board[2] == 'X':
+            print_board()
             print(f'\nYou Win! :-)')
             closeQues = input('Do you want to quit (y/n)')
             if closeQues == 'y':
@@ -122,6 +133,7 @@ def check_result():
                 closeGame = True
 
         else:
+            print_board()
             print(f'\nYou Lose :(')
             closeQues = input('Do you want to quit (y/n)')
             if closeQues == 'y':
@@ -133,6 +145,7 @@ def check_result():
     # Check Diagonals
     elif board[0] == board[4] == board[8] == 'X' or board[0] == board[4] == board[8] == 'O':
         if board[0] == 'X':
+            print_board()
             print(f'\nYou Win! :-)')
             closeQues = input('Do you want to quit (y/n)')
             if closeQues == 'y':
@@ -141,6 +154,7 @@ def check_result():
                 closeGame = True
 
         else:
+            print_board()
             print(f'\nYou Lose :(')
             closeQues = input('Do you want to quit (y/n)')
             if closeQues == 'y':
@@ -150,6 +164,7 @@ def check_result():
 
     elif board[2] == board[4] == board[6] == 'X' or board[2] == board[4] == board[6] == 'O':
         if board[2] == 'X':
+            print_board()
             print(f'\nYou Win! :-)')
             closeQues = input('Do you want to quit (y/n)')
             if closeQues == 'y':
@@ -158,6 +173,7 @@ def check_result():
                 closeGame = True
 
         else:
+            print_board()
             print(f'\nYou Lose :(')
             closeQues = input('Do you want to quit (y/n)')
             if closeQues == 'y':
@@ -166,6 +182,7 @@ def check_result():
                 closeGame = True
 
     elif '-' not in board:
+            print_board()
             print(f'''\nIt's a tie''')
             closeQues = input('Do you want to quit (y/n)')
             if closeQues == 'y':
@@ -734,6 +751,12 @@ while runFlag:
             continue
     except:
         print('Please enter a valid location')
+    algValue = algorithm(board)
+    if algValue != None:
+        board[algValue] = 'O'
+    else:
+        pass
+
     check_result()
     if closeGame:
         board = [
@@ -742,8 +765,3 @@ while runFlag:
             '-', '-', '-'
         ]
         print_board()
-    algValue = algorithm(board)
-    if algValue != None:
-        board[algValue] = 'O'
-    else:
-        pass
