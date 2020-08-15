@@ -733,14 +733,6 @@ while runFlag:
         moveTick += 1
     print_board()
 
-    if closeGame:
-        board = [
-            '-', '-', '-',
-            '-', '-', '-',
-            '-', '-', '-'
-        ]
-        print_board()
-
     whereMove = input('Where do you want to play your next move\nFor example- tl for top left  - ')
     try:
         if board[movesDict[whereMove]] == '-':
