@@ -31,7 +31,7 @@ def check_result():
                 sys.exit()
             else:
                 closeGame = True
-                print(board)
+
         else:
             print(f'\nYou Lose :(')
             closeQues = input('Do you want to quit (y/n)')
@@ -39,7 +39,7 @@ def check_result():
                 sys.exit()
             else:
                 closeGame = True
-                print(board)
+
 
     elif board[3] == board[4] == board[5] == 'X' or board[3] == board[4] == board[5] == 'O':
         if board[3] == 'X':
@@ -49,7 +49,7 @@ def check_result():
                 sys.exit()
             else:
                 closeGame = True
-                print(board)
+
         else:
             print(f'\nYou Lose :(')
             closeQues = input('Do you want to quit (y/n)')
@@ -57,7 +57,7 @@ def check_result():
                 sys.exit()
             else:
                 closeGame = True
-                print(board)
+
     elif board[6] == board[7] == board[8] == 'X' or board[6] == board[7] == board[8] == 'O':
         if board[6] == 'X':
             print(f'\nYou Win! :-)')
@@ -66,7 +66,7 @@ def check_result():
                 sys.exit()
             else:
                 closeGame = True
-                print(board)
+
         else:
             print(f'\nYou Lose :(')
             closeQues = input('Do you want to quit (y/n)')
@@ -74,7 +74,7 @@ def check_result():
                 sys.exit()
             else:
                 closeGame = True
-                print(board)
+
 
 
     # Check Vertically
@@ -86,7 +86,7 @@ def check_result():
                 sys.exit()
             else:
                 closeGame = True
-                print(board)
+
         else:
             print(f'\nYou Lose :(')
             closeQues = input('Do you want to quit (y/n)')
@@ -94,7 +94,7 @@ def check_result():
                 sys.exit()
             else:
                 closeGame = True
-                print(board)
+
     elif board[1] == board[4] == board[7] == 'X' or board[1] == board[4] == board[7] == 'O':
         if board[1] == 'X':
             print(f'\nYou Win! :-)')
@@ -103,7 +103,7 @@ def check_result():
                 sys.exit()
             else:
                 closeGame = True
-                print(board)
+
         else:
             print(f'\nYou Lose :(')
             closeQues = input('Do you want to quit (y/n)')
@@ -111,7 +111,7 @@ def check_result():
                 sys.exit()
             else:
                 closeGame = True
-                print(board)
+
     elif board[2] == board[5] == board[8] == 'X' or board[2] == board[5] == board[8] == 'O':
         if board[2] == 'X':
             print(f'\nYou Win! :-)')
@@ -120,7 +120,7 @@ def check_result():
                 sys.exit()
             else:
                 closeGame = True
-                print(board)
+
         else:
             print(f'\nYou Lose :(')
             closeQues = input('Do you want to quit (y/n)')
@@ -128,7 +128,7 @@ def check_result():
                 sys.exit()
             else:
                 closeGame = True
-                print(board)
+
 
     # Check Diagonals
     elif board[0] == board[4] == board[8] == 'X' or board[0] == board[4] == board[8] == 'O':
@@ -139,7 +139,7 @@ def check_result():
                 sys.exit()
             else:
                 closeGame = True
-                print(board)
+
         else:
             print(f'\nYou Lose :(')
             closeQues = input('Do you want to quit (y/n)')
@@ -147,7 +147,7 @@ def check_result():
                 sys.exit()
             else:
                 closeGame = True
-                print(board)
+
     elif board[2] == board[4] == board[6] == 'X' or board[2] == board[4] == board[6] == 'O':
         if board[2] == 'X':
             print(f'\nYou Win! :-)')
@@ -156,7 +156,7 @@ def check_result():
                 sys.exit()
             else:
                 closeGame = True
-                print(board)
+
         else:
             print(f'\nYou Lose :(')
             closeQues = input('Do you want to quit (y/n)')
@@ -164,7 +164,6 @@ def check_result():
                 sys.exit()
             else:
                 closeGame = True
-                print(board)
 
     elif '-' not in board:
             print(f'''\nIt's a tie''')
@@ -173,7 +172,7 @@ def check_result():
                 sys.exit()
             else:
                 closeGame = True
-                print(board)
+
 
 
 def algorithm(board):
@@ -317,7 +316,7 @@ def algorithm(board):
     # Check the top left diagonal and return a value accordingly
     elif diag1[0] == diag1[1] == 'X' and diag1[2] == '-':
         return 8
-    elif diag1[2] == diag1[1] == 'X' and dia1g[0] == '-':
+    elif diag1[2] == diag1[1] == 'X' and diag1[0] == '-':
         return 0
     elif diag1[0] == diag1[2] == 'X' and diag1[1] == '-':
         return 4
@@ -338,19 +337,367 @@ def algorithm(board):
             if board[i] == 'O':
                 Ocheck = i
                 Onum += 1
-        if Onum == 1 or Onum == 2:
-            if board[7] == 'X' and board[6] == '-':
-                return 6
-            else:
-                if Ocheck == 4 and board[1] == '-':
-                    return 1
-                elif Ocheck == 4 and board[7] == '-':
-                    return 0
-
-                if Ocheck == 0 and board[4] == '-':
+        if Onum == 1:
+            if Ocheck == 0:
+                # Check our first priorities
+                if board[4] == '-':
                     return 4
-                else:
+                elif board[1] == '-':
+                    return 1
+                elif board[3] == '-':
+                    return 3
+                # If none of those are possible then check any other move and play it.
+                elif board[2] == '-':
                     return 2
+                elif board[5] == '-':
+                    return 5
+                elif board[6] == '-':
+                    return 6
+                elif board[7] == '-':
+                    return 7
+                elif board[8] == '-':
+                    return 8
+
+
+            elif Ocheck == 1:
+                # Check our first priorities
+                if board[0] == '-':
+                    return 0
+                elif board[2] == '-':
+                    return 2
+                elif board[3] == '-':
+                    return 3
+                elif board[4] == '-':
+                    return 4
+                elif board[5] == '-':
+                    return 5
+                # Check the rest of the values and return a place for the AI to make a move
+                elif board[6] == '-':
+                    return 6
+                elif board[7] == '-':
+                    return 7
+                elif board[8] == '-':
+                    return 8
+
+            elif Ocheck == 2:
+                # Check our first priorities
+                if board[1] == '-':
+                    return 1
+                elif board[5] == '-':
+                    return 5
+                elif board[4] == '-':
+                    return 4
+                # If none of those are possible then check any other move and play it.
+                elif board[0] == '-':
+                    return 0
+                elif board[3] == '-':
+                    return 3
+                elif board[6] == '-':
+                    return 6
+                elif board[7] == '-':
+                    return 7
+                elif board[8] == '-':
+                    return 8
+
+            elif Ocheck == 3:
+                # Check our first priorities
+                if board[0] == '-':
+                    return 0
+                elif board[1] == '-':
+                    return 1
+                elif board[4] == '-':
+                    return 4
+                elif board[7] == '-':
+                    return 7
+                elif board[6] == '-':
+                    return 6
+                # Check the rest of the values and return a place for the AI to make a move
+                elif board[2] == '-':
+                    return 2
+                elif board[5] == '-':
+                    return 5
+                elif board[8] == '-':
+                    return 8
+
+            elif Ocheck == 4:
+                # Check our first priorities
+                if board[0] == '-':
+                    return 0
+                elif board[1] == '-':
+                    return 1
+                elif board[2] == '-':
+                    return 2
+                elif board[3] == '-':
+                    return 3
+                elif board[5] == '-':
+                    return 5
+                elif board[6] == '-':
+                    return 6
+                elif board[7] == '-':
+                    return 7
+                elif board[8] == '-':
+                    return 8
+
+            elif Ocheck == 5:
+                # Check our first priorities
+                if board[2] == '-':
+                    return 2
+                elif board[1] == '-':
+                    return 1
+                elif board[4] == '-':
+                    return 4
+                elif board[7] == '-':
+                    return 7
+                elif board[8] == '-':
+                    return 8
+                # Check the rest of the values and return a place for the AI to make a move
+                elif board[0] == '-':
+                    return 0
+                elif board[3] == '-':
+                    return 3
+                elif board[6] == '-':
+                    return 6
+
+            elif Ocheck == 6:
+                # Check our first priorities
+                if board[3] == '-':
+                    return 3
+                elif board[4] == '-':
+                    return 4
+                elif board[7] == '-':
+                    return 7
+                # If none of those are possible then check any other move and play it.
+                elif board[0] == '-':
+                    return 0
+                elif board[1] == '-':
+                    return 1
+                elif board[2] == '-':
+                    return 2
+                elif board[5] == '-':
+                    return 5
+                elif board[8] == '-':
+                    return 8
+
+            elif Ocheck == 7:
+                # Check our first priorities
+                if board[4] == '-':
+                    return 4
+                elif board[3] == '-':
+                    return 3
+                elif board[6] == '-':
+                    return 6
+                elif board[5] == '-':
+                    return 5
+                elif board[8] == '-':
+                    return 8
+                # Check the rest of the values and return a place for the AI to make a move
+                elif board[0] == '-':
+                    return 0
+                elif board[1] == '-':
+                    return 1
+                elif board[2] == '-':
+                    return 2
+
+            elif Ocheck == 8:
+                # Check our first priorities
+                if board[4] == '-':
+                    return 4
+                elif board[5] == '-':
+                    return 5
+                elif board[7] == '-':
+                    return 7
+                # If none of those are possible then check any other move and play it.
+                elif board[0] == '-':
+                    return 0
+                elif board[3] == '-':
+                    return 3
+                elif board[1] == '-':
+                    return 1
+                elif board[6] == '-':
+                    return 6
+                elif board[2] == '-':
+                    return 2
+        elif Onum >= 2:
+            if Ocheck == 0:
+                # Check our first priorities
+                if board[4] == '-':
+                    return 4
+                elif board[1] == '-':
+                    return 1
+                elif board[3] == '-':
+                    return 3
+                # If none of those are possible then check any other move and play it.
+                elif board[2] == '-':
+                    return 2
+                elif board[5] == '-':
+                    return 5
+                elif board[6] == '-':
+                    return 6
+                elif board[7] == '-':
+                    return 7
+                elif board[8] == '-':
+                    return 8
+
+
+            elif Ocheck == 1:
+                # Check our first priorities
+                if board[0] == '-':
+                    return 0
+                elif board[2] == '-':
+                    return 2
+                elif board[3] == '-':
+                    return 3
+                elif board[4] == '-':
+                    return 4
+                elif board[5] == '-':
+                    return 5
+                # Check the rest of the values and return a place for the AI to make a move
+                elif board[6] == '-':
+                    return 6
+                elif board[7] == '-':
+                    return 7
+                elif board[8] == '-':
+                    return 8
+
+            elif Ocheck == 2:
+                # Check our first priorities
+                if board[1] == '-':
+                    return 1
+                elif board[5] == '-':
+                    return 5
+                elif board[4] == '-':
+                    return 4
+                # If none of those are possible then check any other move and play it.
+                elif board[0] == '-':
+                    return 0
+                elif board[3] == '-':
+                    return 3
+                elif board[6] == '-':
+                    return 6
+                elif board[7] == '-':
+                    return 7
+                elif board[8] == '-':
+                    return 8
+
+            elif Ocheck == 3:
+                # Check our first priorities
+                if board[0] == '-':
+                    return 0
+                elif board[1] == '-':
+                    return 1
+                elif board[4] == '-':
+                    return 4
+                elif board[7] == '-':
+                    return 7
+                elif board[6] == '-':
+                    return 6
+                # Check the rest of the values and return a place for the AI to make a move
+                elif board[2] == '-':
+                    return 2
+                elif board[5] == '-':
+                    return 5
+                elif board[8] == '-':
+                    return 8
+
+            elif Ocheck == 4:
+                # Check our first priorities
+                if board[0] == '-':
+                    return 0
+                elif board[1] == '-':
+                    return 1
+                elif board[2] == '-':
+                    return 2
+                elif board[3] == '-':
+                    return 3
+                elif board[5] == '-':
+                    return 5
+                elif board[6] == '-':
+                    return 6
+                elif board[7] == '-':
+                    return 7
+                elif board[8] == '-':
+                    return 8
+
+            elif Ocheck == 5:
+                # Check our first priorities
+                if board[2] == '-':
+                    return 2
+                elif board[1] == '-':
+                    return 1
+                elif board[4] == '-':
+                    return 4
+                elif board[7] == '-':
+                    return 7
+                elif board[8] == '-':
+                    return 8
+                # Check the rest of the values and return a place for the AI to make a move
+                elif board[0] == '-':
+                    return 0
+                elif board[3] == '-':
+                    return 3
+                elif board[6] == '-':
+                    return 6
+
+            elif Ocheck == 6:
+                # Check our first priorities
+                if board[3] == '-':
+                    return 3
+                elif board[4] == '-':
+                    return 4
+                elif board[7] == '-':
+                    return 7
+                # If none of those are possible then check any other move and play it.
+                elif board[0] == '-':
+                    return 0
+                elif board[1] == '-':
+                    return 1
+                elif board[2] == '-':
+                    return 2
+                elif board[5] == '-':
+                    return 5
+                elif board[8] == '-':
+                    return 8
+
+            elif Ocheck == 7:
+                # Check our first priorities
+                if board[4] == '-':
+                    return 4
+                elif board[3] == '-':
+                    return 3
+                elif board[6] == '-':
+                    return 6
+                elif board[5] == '-':
+                    return 5
+                elif board[8] == '-':
+                    return 8
+                # Check the rest of the values and return a place for the AI to make a move
+                elif board[0] == '-':
+                    return 0
+                elif board[1] == '-':
+                    return 1
+                elif board[2] == '-':
+                    return 2
+
+            elif Ocheck == 8:
+                # Check our first priorities
+                if board[4] == '-':
+                    return 4
+                elif board[5] == '-':
+                    return 5
+                elif board[7] == '-':
+                    return 7
+                # If none of those are possible then check any other move and play it.
+                elif board[0] == '-':
+                    return 0
+                elif board[3] == '-':
+                    return 3
+                elif board[1] == '-':
+                    return 1
+                elif board[6] == '-':
+                    return 6
+                elif board[2] == '-':
+                    return 2
+
 
     # If there are no O's on the board
     # Place an O on the center or on the top left corner
@@ -375,6 +722,7 @@ while runFlag:
             '-', '-', '-',
             '-', '-', '-'
         ]
+        print_board()
 
     whereMove = input('Where do you want to play your next move\nFor example- tl for top left  - ')
     try:
