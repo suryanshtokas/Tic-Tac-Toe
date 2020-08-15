@@ -735,6 +735,13 @@ while runFlag:
     except:
         print('Please enter a valid location')
     check_result()
+    if closeGame:
+        board = [
+            '-', '-', '-',
+            '-', '-', '-',
+            '-', '-', '-'
+        ]
+        print_board()
     algValue = algorithm(board)
     if algValue != None:
         board[algValue] = 'O'
